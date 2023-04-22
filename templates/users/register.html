@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container m-3 p-3">
+    <h1>Register</h1>
+    <hr>
+    <form id="register-user-form" method="POST">
+        {% include '_form.html' %}        
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <br>
+    <small><a href="/login">Already have an account?</a></small>
+</div>
+{% endblock %}
