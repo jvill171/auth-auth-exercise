@@ -9,8 +9,29 @@
     <title>{% block title %}Base Title{% endblock %}</title>
 </head>
 <body>
-    {% for message in get_flashed_messages() %}
-        <p class="bg-success p-3">{{message}}</p>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AuthExercise</a>
+            <ul class="nav navbar-nav flex-row floating-right">
+                {% if session['username'] %}
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="/logout"><b>Logout</b></a>
+                </li>
+                {% else %}
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="/register"><b>Register</b></a>
+                </li>
+                <li class="nav-item ms-2">
+                    <a class="nav-link" href="/login"><b>Login</b></a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    {% for category, msg in get_flashed_messages(with_categories=True) %}
+    <div class="alert alert-{{category}}">{{ msg }}</div>
     {% endfor %}
     {% block content %}
 
